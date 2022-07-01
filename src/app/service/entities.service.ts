@@ -47,7 +47,7 @@ export class EntitiesService {
     // tslint:disable-next-line: quotemark
     this.add_generating_line('\t adding imports ...');
     this.file_generating += this.config.schemas[ind].imports + '\n';
-    this.file_generating += '@Entity()\n';
+    this.file_generating += '@Entity({ name:'+this.config.schemas[ind].destination+' })\n';
     if (this.config.schemas[ind].index !==undefined){
       this.file_generating+=this.config.schemas[ind].index+'\n';
     }
