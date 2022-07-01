@@ -223,7 +223,7 @@ export class GenerateRoutesService {
     this.lineGenerating += `import { Router } from 'express';\n`;
     this.lineGenerating += `import ${schema.name}Controller from '../controllers/${schema.name}.controller';\n`;
     if (schema.security === true) {
-      this.lineGenerating += `import ${schema.name}Middleware from '../middlewares/${schema.name}Middleware.middleware';\n`;
+      this.lineGenerating += `import ${schema.name}Middleware from '../middlewares/${schema.name}Middleware.middlewares';\n`;
     }
     this.lineGenerating += `import { Routes } from '../interfaces/routes.interface';\n`;
     if (schema.filesupload === true) {
