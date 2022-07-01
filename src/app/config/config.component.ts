@@ -22,7 +22,7 @@ export class ConfigComponent implements OnInit {
   jwtskProduction: string;
   hide = true;
   hidep = true;
-  port = 3000;
+  port = 3500;
   driverdatabase: Selectvalues[] = [{ value: 0, viewValue: 'My Sql' },
   { value: 1, viewValue: "PostgreSQL" },
   { value: 2, viewValue: "SQLite" },
@@ -48,7 +48,7 @@ export class ConfigComponent implements OnInit {
       this.uploadfiles = this.configservice.config.enableuploadfiles;
     }
     if (this.configservice.config.port === undefined) { //for compa delete las version
-      this.configservice.config.port = 3000;
+      this.configservice.config.port = 3500;
     } else {
       this.port = this.configservice.config.port;
     }

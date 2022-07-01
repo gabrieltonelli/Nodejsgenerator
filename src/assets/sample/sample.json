@@ -12,7 +12,7 @@
 	},
 	"enablehttps": false,
 	"enableuploadfiles": true,
-	"port": 3000,
+	"port": 3500,
 	"jwtsk": "hoalmundo",
 	"logger": {
 		"type": 0,

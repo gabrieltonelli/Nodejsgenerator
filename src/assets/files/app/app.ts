@@ -27,7 +27,7 @@ class App {
   /*end class var*/
   constructor(routes: Routes[]) {
     this.app = express();
-    this.port = process.env.PORT || 3000;
+    this.port = process.env.PORT || 3500;
     this.env = process.env.NODE_ENV || 'development';
     /*security https enable*/
     /*end security*/
