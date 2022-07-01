@@ -53,19 +53,19 @@ export class GenerateMiddlewaresService {
             this.lineGenerating += `if(decode.exp < dateNow.getTime()/1000)\n`
             this.lineGenerating += '{\n';
             this.lineGenerating += `const securityRepository = getRepository(${tableSecurity});\n`;
-            this.lineGenerating += `let User=await securityRepository.findOne({where:{${security.login}:decode.login}});\n`;
-            this.lineGenerating += 'if (User) {\n'
-            this.lineGenerating += `User.${security.bearertoken}=User.${security.bearertoken}.replace(bearer,'');\n`;
-            this.lineGenerating += `await securityRepository.save(User);\n`;
+            this.lineGenerating += `let UserAux=await securityRepository.findOne({where:{${security.login}:decode.login}});\n`;
+            this.lineGenerating += 'if (UserAux) {\n'
+            this.lineGenerating += `UserAux.${security.bearertoken}=UserAux.${security.bearertoken}.replace(bearer,'');\n`;
+            this.lineGenerating += `await securityRepository.save(UserAux);\n`;
             this.lineGenerating += `}\n`;
             this.lineGenerating += 'logger.error(`Error token expired login ${decode.login} IP ${req.ip}`);\n'
             this.lineGenerating += ` return next(new HttpException(401,'Unauthorized'));\n`;
             this.lineGenerating += '}\n';
             this.lineGenerating += `const ${tableSecurity.toLowerCase()}Repository = getRepository(${tableSecurity});\n`
             this.lineGenerating += `let find=false;\n`
-            this.lineGenerating += `let User=await ${tableSecurity.toLowerCase()}Repository.findOne({where:{${security.login}:decode.login}});\n`
-            this.lineGenerating += `if (User) {\n`
-            this.lineGenerating += `if (User.${security.bearertoken}.search(bearer)===-1) {\n`;
+            this.lineGenerating += `let UserAux=await ${tableSecurity.toLowerCase()}Repository.findOne({where:{${security.login}:decode.login}});\n`
+            this.lineGenerating += `if (UserAux) {\n`
+            this.lineGenerating += `if (UserAux.${security.bearertoken}.search(bearer)===-1) {\n`;
             this.lineGenerating += '  logger.error(`Error hacker attack false bearer from IP ${req.ip}`);\n'
             this.lineGenerating += ` return next(new HttpException(401,'Unauthorized'));\n`;
             this.lineGenerating += `}`;
