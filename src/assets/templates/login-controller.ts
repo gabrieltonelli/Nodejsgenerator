@@ -26,11 +26,9 @@ class LoginController {
             if (await bcrypt.compare(password, /*tableLower*/./*password*/)) {
                 const date: Date = new Date();
                 const jwt = jsonwebtoken.sign({ login: /*tableLower*/./*login*/, date: date.toString() }, config.get('secretKey'), { expiresIn: '30d' });
-                if (/*tableLower*/./*bearer*/===''){
-                    /*tableLower*/./*bearer*/=jwt;
-                } else {
-                  /*tableLower*/./*bearer*/=/*tableLower*/./*bearer*/+' '+jwt;
-                }
+                
+                /*tableLower*/./*bearer*/=jwt;
+               
                 await this./*tableLower*/Service.patchCount(/*tableLower*/.id, 0);
                 await this./*tableLower*/Service.patchBearer(/*tableLower*/.id, /*tableLower*/./*bearer*/);
                 res.status(201).json({ data: jwt, message: 'Logged' });
