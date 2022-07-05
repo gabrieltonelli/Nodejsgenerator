@@ -175,7 +175,7 @@ export class GenerateRoutesService {
         this.lineGenerating += 'this.router.get(`${this.path\}`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.get${schemaName});\n`;
         break;
       case 'getone':
-        this.lineGenerating += 'this.router.get(`${this.path}' + `/${api.path}` + '/:id`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.get${schemaName}ById);\n`;
+        this.lineGenerating += 'this.router.get(`${this.path}' + (api.path ? `/${api.path}/:id` : '/:id`,') + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.get${schemaName}ById);\n`;
         break;
       case 'findandcount':
         this.lineGenerating += 'this.router.get(`${this.path}' + `/${api.path}` + '`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.findAndCount);\n`;
@@ -193,7 +193,7 @@ export class GenerateRoutesService {
         this.lineGenerating += 'this.router.get(`${this.path}' + `/findwithoptions${api.path}` + '/:options`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.skipLimitOptions${api.path});\n`;
         break;
       case 'findandcountwithoptions':
-        this.lineGenerating += 'this.router.get(`${this.path}' + `/findandcountwithoptions${api.path}` + '/:options`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.skipLimitOptions${api.path});\n`;
+        this.lineGenerating += 'this.router.get(`${this.path}' + `/filter${api.path}` + '/:options`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.skipLimitOptions${api.path});\n`;
         break;
       case 'count':
         this.lineGenerating += 'this.router.get(`${this.path}/count`,' + this.generateSecurity(api, schema) + `this.${schemaLower}Controller.get${schemaName}Count);\n`;

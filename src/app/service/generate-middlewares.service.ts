@@ -26,7 +26,14 @@ export class GenerateMiddlewaresService {
         this.lineGenerating += `import jsonwebtoken from 'jsonwebtoken';\n`
         this.lineGenerating += ` export class ${schema.name}Middleware {\n`;
         this.lineGenerating += `constructor(){}\n`
-        const apis: Api[] = this.configService.getapis(schema.id);
+        let apis: Api[] = this.configService.getapis(schema.id);
+        
+        apis = apis.filter((value, index, self) => {
+          return self.findIndex(v => v.type === value.type && v.path === value.path) === index;
+        })
+
+
+
         apis.forEach(api => {
           if (api.security === true) {
             this.lineGenerating += `public ${api.type + api.path}Middleware = async (req: Request, res: Response, next: NextFunction)=> {\n`
