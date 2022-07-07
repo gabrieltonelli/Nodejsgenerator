@@ -140,11 +140,7 @@ export class EntitiesService {
             this.file_generating += '@Column()\n';
           }
           else {
-            this.file_generating += '@Column({' + fieldcolumn.extraparameter;
-            if (fieldcolumn.length !== 0) {
-              this.file_generating += ' length:' + fieldcolumn.length.toString();
-            }
-            this.file_generating += '})\n';
+            this.file_generating += '@Column({' + fieldcolumn.extraparameter+ '})\n';
           }
           this.file_generating += fieldcolumn.name + ':number;\n\n';
           break;
@@ -157,12 +153,7 @@ export class EntitiesService {
               this.file_generating+=`@Index(${fieldcolumn.indexParameter})\n`;
             }
           }
-          if (fieldcolumn.extraparameter === '') {
-            this.file_generating += '@Column()\n';
-          }
-          else {
-            this.file_generating += '@Column({' + fieldcolumn.extraparameter + '})\n';
-          }
+          this.file_generating += this.dateColumn(fieldcolumn.name ,fieldcolumn.extraparameter);
           this.file_generating += fieldcolumn.name + ': Date;\n\n';
           break;
         default:
@@ -170,8 +161,15 @@ export class EntitiesService {
       }
     }
   }
+  private dateColumn(column_name: string, column_parameters: string): string{
+    if(column_name === 'createdAt')
+      return column_parameters === '' ? '@CreateDateColumn()\n' : '@CreateDateColumn({'+ column_parameters +'})\n';
+    if(column_name === 'updatedAt')
+      return column_parameters === '' ? '@UpdateDateColumn()\n' : '@UpdateDateColumn({'+ column_parameters +'})\n';
+    return column_parameters === '' ? '@Column()\n' : '@Column({'+ column_parameters +'})\n';
+  }
   private generateimports(relations: Relations): string {
-    let importorm = 'import { Entity, Column ';
+    let importorm = 'import { Entity, Column, CreateDateColumn, UpdateDateColumn ';
     let joincolummn = false;
     let insertstr = '';
     if (relations.OnetoOne !== undefined && relations.OnetoOne.length !== 0) {
