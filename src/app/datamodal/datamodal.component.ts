@@ -14,7 +14,8 @@ export class DatamodalComponent implements OnInit {
   types: Type[] = [
     { value: 'number', viewValue: 'Number' },
     { value: 'string', viewValue: 'String' },
-    { value: 'date', viewValue: 'Date' }
+    { value: 'date', viewValue: 'Date' },
+    { value: 'boolean', viewValue: 'Boolean' }
   ];
   autonumber: boolean;
   index: boolean;

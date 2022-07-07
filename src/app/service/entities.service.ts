@@ -144,6 +144,23 @@ export class EntitiesService {
           }
           this.file_generating += fieldcolumn.name + ':number;\n\n';
           break;
+        case 'boolean':
+          if (fieldcolumn.index === true) {
+            this.orm_check.Index = true;
+            if (fieldcolumn.indexParameter===undefined){
+            this.file_generating += '@Index()\n';
+            } else {
+              this.file_generating+=`@Index(${fieldcolumn.indexParameter})\n`;
+            }
+          }
+          if (fieldcolumn.extraparameter === '') {
+            this.file_generating += '@Column()\n';
+          }
+          else {
+            this.file_generating += '@Column({' + fieldcolumn.extraparameter+ '})\n';
+          }
+          this.file_generating += fieldcolumn.name + ':boolean;\n\n';
+          break;  
         case 'date':
           if (fieldcolumn.index === true) {
             this.orm_check.Index = true;

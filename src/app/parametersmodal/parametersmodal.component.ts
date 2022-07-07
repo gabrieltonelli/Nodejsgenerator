@@ -14,6 +14,7 @@ export class ParametersmodalComponent implements OnInit {
     { value: 'number', viewValue: 'Number' },
     { value: 'string', viewValue: 'String' },
     { value: 'date', viewValue: 'date' },
+    { value: 'boolean', viewValue: 'Boolean' },
     { value: 'arraystring',viewValue:'ArrayString'}
 
   ];

@@ -27,7 +27,8 @@ export class SchematicsComponent implements OnInit {
   types: Type[] = [
     { value: 'number', viewValue: 'Number' },
     { value: 'string', viewValue: 'String' },
-    { value: 'date', viewValue: 'date' }
+    { value: 'date', viewValue: 'date' },
+    { value: 'boolean', viewValue: 'Boolean' }
   ];
   dataSource = new MatTableDataSource<Schemaitem>([]);
   @ViewChild(MatTable) table: MatTable<Schemaitem>;
