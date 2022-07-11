@@ -19,7 +19,7 @@ export class RelationdatamodalonetomanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.tables= [... this.configservice.getschema()];
-    this.tables.splice(this.data.id -1,1);
+    //this.tables.splice(this.data.id -1,1);
     this.profileForm=new FormGroup({ relationname:new FormControl(this.data.data.relationname,Validators.required),
       table: new FormControl(this.data.data.table,Validators.required),
       manytoone: new FormControl(this.data.data.manytoone,Validators.required)

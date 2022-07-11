@@ -4,6 +4,7 @@ import { ElectronService } from 'ngx-electron';
 import { Schemaitem } from '../interfaces/schema';
 import { ConfigService } from '../service/config.service';
 import { RelationsService } from '../service/relations.service';
+import { element } from 'protractor';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,7 +43,7 @@ export class EntitiesService {
     const fields = this.config.schemas[ind].schemastable;
     const relations = this.config.schemas[ind].schemarelations;
     if (relations !== undefined) {
-      this.add_relations_entity(relations);
+      this.add_relations_entity(relations, this.config.schemas[ind].name);
     }
     // tslint:disable-next-line: quotemark
     this.add_generating_line('\t adding imports ...');
@@ -73,25 +74,30 @@ export class EntitiesService {
     }
   }
 
-  private add_relations_entity(relations: Relations) {
+  private add_relations_entity(relations: Relations, entity: string) {
+
     if (relations.OnetoOne !== undefined) {
       relations.OnetoOne.forEach(element => {
-        this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
+        if (entity != element.table)
+          this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
       });
     }
     if (relations.Onetomany !== undefined) {
       relations.Onetomany.forEach(element => {
-        this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
+        if (entity != element.table)
+          this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
       });
     }
     if (relations.Manytoone !== undefined) {
       relations.Manytoone.forEach(element => {
-        this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
+        if (entity != element.table)
+          this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
       });
     }
     if (relations.Manytomany !== undefined) {
-      relations.Manytomany.forEach(element => {
-        this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
+        relations.Manytomany.forEach(element => {
+        if (entity != element.table)
+          this.file_generating += `import {${element.table}} from "./${element.table}.entity";\n`;
       });
     }
   }
