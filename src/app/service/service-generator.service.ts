@@ -29,9 +29,10 @@ export class ServiceGeneratorService {
       }
     });
   }
+
   createBody(item, index) {
     this.textGenerated += `class ${item.name}Service {\n`;
-    this.textGenerated += `public ${item.name.toLowerCase()} = ${item.name}\n`;
+    this.textGenerated += `public ${item.name.toLowerCase()} = ${item.name};\n`;
     this.bodyRelations(index, item);
     this.generateService(item, index);
     this.textGenerated += `}\n`;
@@ -40,21 +41,22 @@ export class ServiceGeneratorService {
 
   bodyRelations(index, item) {
     const id = this.config_service.getschemawithname(item.name);
-    const oneToMany = this.relationsService.getrelationsonetomany(id);
+
+    const oneToMany = this.clearDuplicatesEntities(this.relationsService.getrelationsonetomany(id));
     oneToMany.forEach(OneToMany => {
-      this.textGenerated += `public ${OneToMany.table.toLowerCase()}=${OneToMany.table}\n`;
+      this.textGenerated += `public ${OneToMany.table.toLowerCase()}=${OneToMany.table};\n`;
     });
-    const manyToOne = this.relationsService.getrelationmanytoone(id);
+    const manyToOne = this.clearDuplicatesEntities(this.relationsService.getrelationmanytoone(id));
     manyToOne.forEach(ManyToOne => {
       this.textGenerated += `public ${ManyToOne.table.toLowerCase()}=${ManyToOne.table};\n`;
     });
-    const manyToMany = this.relationsService.getrelationsmanytomany(id);
+    const manyToMany = this.clearDuplicatesEntities(this.relationsService.getrelationsmanytomany(id));
     manyToMany.forEach(ManyToMany => {
-      this.textGenerated += `public ${ManyToMany.table.toLowerCase()}=${ManyToMany.table}\n`;
+      this.textGenerated += `public ${ManyToMany.table.toLowerCase()}=${ManyToMany.table};\n`;
     });
-    const oneToOne = this.relationsService.getrelationsonetone(id);
+    const oneToOne = this.clearDuplicatesEntities(this.relationsService.getrelationsonetone(id));
     oneToOne.forEach(OneToOne => {
-      this.textGenerated += `public  ${OneToOne.table.toLowerCase()}=${OneToOne.table}\n`;
+      this.textGenerated += `public  ${OneToOne.table.toLowerCase()}=${OneToOne.table};\n`;
     });
   }
 
@@ -71,21 +73,27 @@ export class ServiceGeneratorService {
     this.textGenerated += `import { isEmpty } from '@utils/util';\n`;
   }
 
+  clearDuplicatesEntities(array:any){
+    //return array.filter((a:any, i:any) => array.findIndex((s:any) => a.table === s.table) === i);
+    return array.filter((value, index, self) => self.findIndex((m) => m.table !== value.table) === index);
+  }
+
   relationsHeader(table: string) {
     const id = this.config_service.getschemawithname(table);
-    const oneToMany = this.relationsService.getrelationsonetomany(id);
+
+    const oneToMany = this.clearDuplicatesEntities(this.relationsService.getrelationsonetomany(id));
     oneToMany.forEach(OneToMany => {
       this.textGenerated += `import  {${OneToMany.table}} from '../entity/${OneToMany.table}.entity';\n`;
     });
-    const manyToOne = this.relationsService.getrelationmanytoone(id);
+    const manyToOne = this.clearDuplicatesEntities(this.relationsService.getrelationmanytoone(id));
     manyToOne.forEach(ManyToOne => {
       this.textGenerated += `import  {${ManyToOne.table}} from '../entity/${ManyToOne.table}.entity';\n`;
     });
-    const manyToMany = this.relationsService.getrelationsmanytomany(id);
+    const manyToMany = this.clearDuplicatesEntities(this.relationsService.getrelationsmanytomany(id));
     manyToMany.forEach(ManyToMany => {
       this.textGenerated += `import  {${ManyToMany.table}} from '../entity/${ManyToMany.table}.entity';\n`;
     });
-    const oneToOne = this.relationsService.getrelationsonetone(id);
+    const oneToOne = this.clearDuplicatesEntities(this.relationsService.getrelationsonetone(id));
     oneToOne.forEach(OneToOne => {
       this.textGenerated += `import  {${OneToOne.table}} from '../entity/${OneToOne.table}.entity';\n`;
     });

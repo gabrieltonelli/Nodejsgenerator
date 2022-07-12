@@ -1,0 +1,5963 @@
+{
+	"version": 0.3,
+	"schemapath": "/home/gtonelli/Documentos/BE_BACKUP_nodejsgenerator7(con_relaciones)3.json",
+	"filePath": "/home/gtonelli/propios/nest/beapi",
+	"projectname": "Be_api",
+	"enableCors": true,
+	"corsHost": [
+		"*"
+	],
+	"dbconf": {
+		"selecteddatabase": 0,
+		"host": "127.0.0.1",
+		"port": 3000,
+		"username": "root",
+		"password": "32fh78egbfvh932hf897wef3",
+		"database": "be"
+	},
+	"dbconfProduction": {
+		"selecteddatabase": 0,
+		"host": "127.0.0.1",
+		"port": 3000,
+		"username": "root",
+		"password": "32fh78egbfvh932hf897wef3",
+		"database": "be",
+		"corsHost": ""
+	},
+	"enablehttps": false,
+	"enableuploadfiles": false,
+	"port": 3500,
+	"jwtsk": "test",
+	"jwtskProduction": "test",
+	"logger": {
+		"type": 0,
+		"file": "info.log",
+		"maxsize": 50000,
+		"typewarn": 0,
+		"filewarn": "warn.log",
+		"maxsizewarn": 10000,
+		"typeerror": 0,
+		"fileerror": "error.log",
+		"maxsizeerror": 10000
+	},
+	"security": {
+		"table": "User",
+		"login": "username",
+		"password": "password",
+		"bearertoken": "bearer",
+		"roles": "roles",
+		"count": "count",
+		"rolesclass": "RolesGuard",
+		"logger": true
+	},
+	"schemas": [
+		{
+			"id": 1,
+			"name": "User",
+			"description": "users",
+			"imports": "",
+			"fields": "",
+			"security": true,
+			"classsecurity": "RolesGuard",
+			"filesecurity": "",
+			"mastersecurity": true,
+			"filesupload": false,
+			"schemastable": [
+				{
+					"id": 1,
+					"name": "id",
+					"type": "number",
+					"length": 255,
+					"index": false,
+					"extraparameter": "",
+					"keyautonumber": true,
+					"indexParameter": ""
+				},
+				{
+					"id": 2,
+					"name": "username",
+					"type": "string",
+					"length": 30,
+					"index": true,
+					"extraparameter": "",
+					"keyautonumber": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 3,
+					"name": "password",
+					"type": "string",
+					"length": 255,
+					"index": false,
+					"extraparameter": "",
+					"keyautonumber": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 4,
+					"name": "roles",
+					"type": "string",
+					"length": 255,
+					"index": false,
+					"extraparameter": "",
+					"keyautonumber": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 5,
+					"name": "bearer",
+					"type": "string",
+					"length": 255,
+					"index": false,
+					"extraparameter": "nullable: true,",
+					"keyautonumber": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 6,
+					"name": "count",
+					"type": "number",
+					"length": 10,
+					"index": false,
+					"extraparameter": "default: 0,",
+					"keyautonumber": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "socialNetworkId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "string",
+					"name": "email",
+					"length": 60,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "string",
+					"name": "avatarUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 11,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 12,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 13,
+					"type": "number",
+					"name": "userTypeId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 14,
+					"type": "date",
+					"name": "verifiedAccount",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserConfigurations",
+						"table": "UserConfiguration",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserWorkspaces",
+						"table": "UserWorkspace",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserGroups",
+						"table": "UserGroup",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContactGroups",
+						"table": "UserContactGroup",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContacts",
+						"table": "UserContact",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserSocialNetworks",
+						"table": "UserSocialNetwork",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContactAttributeCalifications",
+						"table": "UserContactAttributeCalification",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContactCategoryPreferences",
+						"table": "UserContactCategoryPreference",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContactAttributePreferences",
+						"table": "UserContactAttributePreference",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserContactAttributeCalificationLogs",
+						"table": "UserContactAttributeCalificationLog",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserAttributeCalificationLogs",
+						"table": "UserAttributeCalificationLog",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserLogs",
+						"table": "UserLog",
+						"manytoone": "user"
+					},
+					{
+						"relationname": "UserAmbitPreferences",
+						"table": "UserAmbitPreference",
+						"manytoone": "user"
+					}
+				],
+				"Manytoone": [
+					{
+						"relationname": "userType",
+						"table": "UserType"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "1",
+					"id": 1,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"username",
+						"password",
+						"roles",
+						"bearer",
+						"count",
+						"socialNetworkId",
+						"email",
+						"avatarUrl"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "get",
+					"operation": "getall",
+					"path": "all",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "get",
+					"operation": "findandcount",
+					"path": "exist",
+					"field": "",
+					"security": true,
+					"roles": "admin,user",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 5,
+					"type": "put",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 6,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 7,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "find",
+					"field": "",
+					"security": true,
+					"roles": "admin,user",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": ""
+		},
+		{
+			"id": 2,
+			"name": "Contact",
+			"description": "contacts",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "username",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "socialNetworkId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "string",
+					"name": "email",
+					"length": 60,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "string",
+					"name": "avatarUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "company",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"name": "city",
+					"type": "string",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 9,
+					"name": "job",
+					"type": "string",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 10,
+					"name": "gender",
+					"type": "string",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 11,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 12,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 13,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 14,
+					"type": "string",
+					"name": "detail",
+					"length": 150,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 15,
+					"type": "date",
+					"name": "birthDate",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserContactAttributeCalifications",
+						"table": "UserContactAttributeCalification",
+						"manytoone": "contact"
+					},
+					{
+						"relationname": "UserContactAttributePreferences",
+						"table": "UserContactAttributePreference",
+						"manytoone": "contact"
+					},
+					{
+						"relationname": "UserContactGroups",
+						"table": "UserContactGroup",
+						"manytoone": "contact"
+					},
+					{
+						"relationname": "UserContactAttributeCalificationLogs",
+						"table": "UserContactAttributeCalificationLog",
+						"manytoone": "contact"
+					},
+					{
+						"relationname": "UserContacts",
+						"table": "UserContact",
+						"manytoone": "contact"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "2",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"username",
+						"socialNetworkId",
+						"email",
+						"avatarUrl",
+						"company",
+						"city",
+						"job",
+						"gender",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "2",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"username",
+						"socialNetworkId",
+						"email",
+						"avatarUrl",
+						"company",
+						"city",
+						"job",
+						"gender",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "2",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"username",
+						"socialNetworkId",
+						"email",
+						"avatarUrl",
+						"company",
+						"city",
+						"job",
+						"gender",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 3,
+			"name": "Ambit",
+			"description": "ambits",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "prefix",
+					"length": 20,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "string",
+					"name": "color",
+					"length": 8,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "string",
+					"name": "iconUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "Categories",
+						"table": "Category",
+						"manytoone": "ambit"
+					},
+					{
+						"relationname": "UserAmbitPreferences",
+						"table": "UserAmbitPreference",
+						"manytoone": "ambit"
+					}
+				],
+				"Manytoone": []
+			},
+			"schemasapi": [
+				{
+					"idschema": "3",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "3",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "3",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 4,
+			"name": "Category",
+			"description": "categories",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "prefix",
+					"length": 20,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "ambitId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "string",
+					"name": "iconUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "color",
+					"length": 8,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "Attributes",
+						"table": "Attribute",
+						"manytoone": "category"
+					},
+					{
+						"relationname": "ContactTypeCategories",
+						"table": "ContactTypeCategory",
+						"manytoone": "category"
+					},
+					{
+						"relationname": "UserContactCategoryPreferences",
+						"table": "UserContactCategoryPreference",
+						"manytoone": "category"
+					}
+				],
+				"Manytoone": [
+					{
+						"relationname": "ambit",
+						"table": "Ambit"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "4",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"ambitId",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "4",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"ambitId",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "4",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"prefix",
+						"name",
+						"detail",
+						"ambitId",
+						"iconUrl",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 5,
+			"name": "Attribute",
+			"description": "attributes",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"name": "categoryId",
+					"type": "number",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "nameM",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "nameF",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "string",
+					"name": "connector",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "antonymM",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "string",
+					"name": "antonymF",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "string",
+					"name": "synonyms",
+					"length": 100,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"name": "color",
+					"type": "string",
+					"length": 8,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 11,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 12,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 13,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserContactAttributePreferences",
+						"table": "UserContactAttributePreference",
+						"manytoone": "attribute"
+					},
+					{
+						"relationname": "UserAttributeCalificationLogs",
+						"table": "UserAttributeCalificationLog",
+						"manytoone": "attribute"
+					},
+					{
+						"relationname": "UserContactAttributeCalificationLogs",
+						"table": "UserContactAttributeCalificationLog",
+						"manytoone": "attribute"
+					},
+					{
+						"relationname": "UserContactAttributeCalifications",
+						"table": "UserContactAttributeCalification",
+						"manytoone": "attribute"
+					}
+				],
+				"Manytoone": [
+					{
+						"relationname": "category",
+						"table": "Category"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "5",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"categoryId",
+						"nameM",
+						"nameF",
+						"detail",
+						"connector",
+						"antonymM",
+						"antonymF",
+						"synonyms",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "5",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"categoryId",
+						"nameM",
+						"nameF",
+						"detail",
+						"connector",
+						"antonymM",
+						"antonymF",
+						"synonyms",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "5",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"categoryId",
+						"nameM",
+						"nameF",
+						"detail",
+						"connector",
+						"antonymM",
+						"antonymF",
+						"synonyms",
+						"color",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 6,
+			"name": "Configuration",
+			"description": "configurations",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "name",
+					"length": 100,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "possibleValues",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserConfiguratios",
+						"table": "UserConfiguration",
+						"manytoone": "configuration"
+					},
+					{
+						"relationname": "WorkspaceConfiguratios",
+						"table": "WorkspaceConfiguration",
+						"manytoone": "configuration"
+					}
+				],
+				"Manytoone": []
+			},
+			"schemasapi": [
+				{
+					"idschema": "6",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"detail",
+						"possibleValues",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "6",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"detail",
+						"possibleValues",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "6",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"detail",
+						"possibleValues",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 7,
+			"name": "ContactType",
+			"description": "contacttypes",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "contactTypeParentId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "iconUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "ContactTypeCategories",
+						"table": "ContactTypeCategory",
+						"manytoone": "contactType"
+					},
+					{
+						"relationname": "UserContacts",
+						"table": "UserContact",
+						"manytoone": "contactType"
+					}
+				],
+				"Manytoone": []
+			},
+			"schemasapi": [
+				{
+					"idschema": "7",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"contactTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "7",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"contactTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "7",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"contactTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 8,
+			"name": "ContactTypeCategory",
+			"description": "contacttypecategories",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"name": "contactTypeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "categoryId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "category",
+						"table": "Category"
+					},
+					{
+						"relationname": "contactType",
+						"table": "ContactType"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "8",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"contactTypeId",
+						"categoryId",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "8",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"contactTypeId",
+						"categoryId",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "8",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"contactTypeId",
+						"categoryId",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 9,
+			"name": "UserType",
+			"description": "usertypes",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "userTypeParentId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "iconUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "Users",
+						"table": "User",
+						"manytoone": "userType"
+					},
+					{
+						"relationname": "UserTypeParent",
+						"table": "UserType",
+						"manytoone": "userType"
+					}
+				],
+				"Manytoone": [
+					{
+						"relationname": "userType",
+						"table": "UserType"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "9",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"userTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "9",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"userTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "9",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"userTypeParentId",
+						"iconUrl",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 10,
+			"name": "SocialNetwork",
+			"description": "socialnetworks",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "url",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "iconClass",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserSocialNetworks",
+						"table": "UserSocialNetwork",
+						"manytoone": "socialNetwork"
+					}
+				],
+				"Manytoone": []
+			},
+			"schemasapi": [
+				{
+					"idschema": "10",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "10",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "10",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 11,
+			"name": "UserContactAttributePreference",
+			"description": "usercontactattributepreferences",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "attributeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "boolean",
+					"name": "isFavorite",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "boolean",
+					"name": "isFollowing",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "boolean",
+					"name": "isIgnored",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 11,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "attribute",
+						"table": "Attribute"
+					},
+					{
+						"relationname": "contact",
+						"table": "Contact"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "11",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "11",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "11",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 12,
+			"name": "UserContactCategoryPreference",
+			"description": "usercontactcategorypreferences",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "categoryId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"name": "isFavorite",
+					"type": "boolean",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"index": false,
+					"indexParameter": ""
+				},
+				{
+					"id": 6,
+					"type": "boolean",
+					"name": "isFollowing",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "boolean",
+					"name": "isIgnored",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 11,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "category",
+						"table": "Category"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "12",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"categoryId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "12",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"categoryId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "12",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"categoryId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 13,
+			"name": "UserContactGroup",
+			"description": "usercontactgroups",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "userGroupId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "contact",
+						"table": "Contact"
+					},
+					{
+						"relationname": "userGroup",
+						"table": "UserGroup"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "13",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"userGroupId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "13",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"userGroupId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "13",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"userGroupId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 14,
+			"name": "UserGroup",
+			"description": "usergroups",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "string",
+					"name": "name",
+					"length": 30,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserContactGroups",
+						"table": "UserContactGroup",
+						"manytoone": "userGroup"
+					}
+				],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "14",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"name",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "14",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"name",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "14",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"name",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 15,
+			"name": "UserContact",
+			"description": "usercontacts",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "boolean",
+					"name": "isFavorite",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "boolean",
+					"name": "isFollowing",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "boolean",
+					"name": "isIgnored",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 11,
+					"type": "number",
+					"name": "contactTypeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "contactType",
+						"table": "ContactType"
+					},
+					{
+						"relationname": "contact",
+						"table": "Contact"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "15",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"contactTypeId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "15",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"contactTypeId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "15",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"isFavorite",
+						"isFollowing",
+						"isIgnored",
+						"contactTypeId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 16,
+			"name": "Workspace",
+			"description": "workspaces",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "string",
+					"name": "name",
+					"length": 60,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "string",
+					"name": "logoUrl",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [
+					{
+						"relationname": "UserWorkspaces",
+						"table": "UserWorkspace",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserSocialNetworks",
+						"table": "UserSocialNetwork",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "WorkspaceConfiguratios",
+						"table": "WorkspaceConfiguration",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserAttributeCalificationLogs",
+						"table": "UserAttributeCalificationLog",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContactAttributeCalificationLogs",
+						"table": "UserContactAttributeCalificationLog",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserConfiguratios",
+						"table": "UserConfiguration",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserGroups",
+						"table": "UserGroup",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContactAttributePreferences",
+						"table": "UserContactAttributePreference",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserAmbitPreferences",
+						"table": "UserAmbitPreference",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContactCategoryPreferences",
+						"table": "UserContactCategoryPreference",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContactAttributeCalifications",
+						"table": "UserContactAttributeCalification",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContactGroups",
+						"table": "UserContactGroup",
+						"manytoone": "workspace"
+					},
+					{
+						"relationname": "UserContacts",
+						"table": "UserContact",
+						"manytoone": "workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "17",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"logoUrl",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "17",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"logoUrl",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "17",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"name",
+						"logoUrl",
+						"detail",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 17,
+			"name": "UserWorkspace",
+			"description": "userworkspaces",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "grant",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "18",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"workspaceId",
+						"grant",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "18",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"workspaceId",
+						"grant",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "18",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"workspaceId",
+						"grant",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 18,
+			"name": "UserAmbitPreference",
+			"description": "userambitpreferences",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "ambitId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "boolean",
+					"name": "isFavorite",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "default: 0,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "ambit",
+						"table": "Ambit"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "19",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"ambitId",
+						"isFavorite",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "19",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"ambitId",
+						"isFavorite",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "19",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"ambitId",
+						"isFavorite",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 19,
+			"name": "UserContactAttributeCalification",
+			"description": "usercontactattributecalifications",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "number",
+					"name": "attributeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 9,
+					"type": "number",
+					"name": "calification",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 10,
+					"type": "date",
+					"name": "sendedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 11,
+					"type": "date",
+					"name": "receivedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 12,
+					"type": "date",
+					"name": "readedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "attribute",
+						"table": "Attribute"
+					},
+					{
+						"relationname": "contact",
+						"table": "Contact"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "20",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"sendedAt",
+						"receivedAt",
+						"readedAt",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "20",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"sendedAt",
+						"receivedAt",
+						"readedAt",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "20",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"sendedAt",
+						"receivedAt",
+						"readedAt",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 20,
+			"name": "UserContactAttributeCalificationLog",
+			"description": "usercontactattributecalificationlog",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "contactId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "attributeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "number",
+					"name": "calification",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "attribute",
+						"table": "Attribute"
+					},
+					{
+						"relationname": "contact",
+						"table": "Contact"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "21",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "21",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "21",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"contactId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 21,
+			"name": "UserAttributeCalificationLog",
+			"description": "userattributecalificationlog",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "attributeId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "number",
+					"name": "calification",
+					"length": 1,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "attribute",
+						"table": "Attribute"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "22",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "22",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "22",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"attributeId",
+						"calification",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 22,
+			"name": "UserLog",
+			"description": "userlog",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "string",
+					"name": "typeLog",
+					"length": 20,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "action",
+					"length": 60,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "string",
+					"name": "detail",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "23",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"typeLog",
+						"action",
+						"detail",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "23",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"typeLog",
+						"action",
+						"detail",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "23",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"typeLog",
+						"action",
+						"detail",
+						"createdAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 23,
+			"name": "UserConfiguration",
+			"description": "userconfiguratios",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "idConfiguration",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "value",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					},
+					{
+						"relationname": "configuration",
+						"table": "Configuration"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "24",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "24",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "24",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 24,
+			"name": "UserSocialNetwork",
+			"description": "usersocialnetworks",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "userId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "username",
+					"length": 60,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 8,
+					"type": "number",
+					"name": "socialNetworkId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "user",
+						"table": "User"
+					},
+					{
+						"relationname": "socialNetwork",
+						"table": "SocialNetwork"
+					},
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "25",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "25",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "25",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"userId",
+						"username",
+						"socialNetworkId",
+						"createdAt",
+						"updatedAt",
+						"statusId",
+						"workspaceId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		},
+		{
+			"id": 25,
+			"name": "WorkspaceConfiguration",
+			"description": "workspaceconfigurations",
+			"schemastable": [
+				{
+					"id": 1,
+					"type": "number",
+					"name": "id",
+					"length": 10,
+					"keyautonumber": true,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 2,
+					"type": "date",
+					"name": "createdAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 3,
+					"type": "date",
+					"name": "updatedAt",
+					"length": 0,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 4,
+					"type": "number",
+					"name": "statusId",
+					"length": 4,
+					"keyautonumber": false,
+					"extraparameter": "default: 1,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 5,
+					"type": "number",
+					"name": "workspaceId",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "nullable: true,",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 6,
+					"type": "number",
+					"name": "idConfiguration",
+					"length": 10,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				},
+				{
+					"id": 7,
+					"type": "string",
+					"name": "value",
+					"length": 255,
+					"keyautonumber": false,
+					"extraparameter": "",
+					"indexParameter": "",
+					"index": false
+				}
+			],
+			"schemarelations": {
+				"OnetoOne": [],
+				"Onetomany": [],
+				"Manytoone": [
+					{
+						"relationname": "workspace",
+						"table": "Workspace"
+					},
+					{
+						"relationname": "configuration",
+						"table": "Configuration"
+					}
+				]
+			},
+			"schemasapi": [
+				{
+					"idschema": "26",
+					"id": 1,
+					"type": "get",
+					"operation": "findandcountwithoptions",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"workspaceId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 2,
+					"type": "patch",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 3,
+					"type": "delete",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"id": 4,
+					"type": "post",
+					"operation": "",
+					"path": "",
+					"field": "",
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "26",
+					"id": 5,
+					"type": "get",
+					"operation": "getall",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"workspaceId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				},
+				{
+					"idschema": "26",
+					"id": 6,
+					"type": "get",
+					"operation": "getone",
+					"path": "",
+					"field": "",
+					"fields": [
+						"id",
+						"workspaceId",
+						"idConfiguration",
+						"value",
+						"createdAt",
+						"updatedAt",
+						"statusId"
+					],
+					"security": true,
+					"roles": "admin",
+					"extfiles": "",
+					"options": "",
+					"parameters": []
+				}
+			],
+			"index": "",
+			"fields": null,
+			"imports": null,
+			"security": true,
+			"classsecurity": null,
+			"filesecurity": null,
+			"mastersecurity": null,
+			"filesupload": null
+		}
+	],
+	"extension": []
+}
